@@ -8,9 +8,5 @@ export default function MainProvider({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <TanStackProvider>{children}</TanStackProvider>
-    </>
-  );
+  return <TanStackProvider>{children}</TanStackProvider>;
 }

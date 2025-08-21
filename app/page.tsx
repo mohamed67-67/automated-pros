@@ -1,9 +1,9 @@
-import TestPage from "@/components/TestPage";
+import LandingPage from "@/components/views/landing/LandingPage";
 
 export default function Home() {
   return (
     <div>
-      <TestPage />
+      <LandingPage />
     </div>
   );
 }
