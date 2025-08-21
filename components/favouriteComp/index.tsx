@@ -24,7 +24,6 @@ export default function FavouriteComp({
   useEffect(() => {
     if (localStorage) {
       const favChars = localStorage?.getItem("favChars");
-      console.log(JSON.parse(favChars!));
       if (favChars?.includes(`${id}`)) {
         setFav(true);
       } else {
@@ -42,7 +41,6 @@ export default function FavouriteComp({
       const newList = favCharsList.filter((charc) => charc !== id);
       localStorage.setItem("favChars", JSON.stringify(newList));
     } else {
-      console.log("triggered");
       localStorage.setItem("favChars", JSON.stringify([...favCharsList, id]));
     }
   };

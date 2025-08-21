@@ -16,7 +16,6 @@ export default function CharactersList({
   isSuccess,
   refetch,
 }: ICharactersList) {
-  console.log(data);
   return (
     <div className="w-full">
       {isLoading ? (

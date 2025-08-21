@@ -9,7 +9,7 @@ import React, { Fragment, useEffect, useState } from "react";
 
 export default function Favourites() {
   const [page, setPage] = useState(1);
-  const [certainChar, setCertainChar] = useState(undefined);
+  const [certainChar, setCertainChar] = useState<any>(undefined);
 
   const { data, isLoading, isError, isSuccess, refetch } = useQuery({
     queryFn: () =>
@@ -20,14 +20,13 @@ export default function Favourites() {
     queryKey: ["favCharacters", certainChar],
     enabled: !!certainChar,
   });
-  console.log(certainChar);
   useEffect(() => {
     if (localStorage) {
       setCertainChar(JSON.parse(localStorage.getItem("favChars")!));
     }
   }, []);
 
-  if (certainChar === null)
+  if (certainChar === null || (certainChar && certainChar?.length === 0))
     return (
       <div className="flex justify-center items-center h-[70vh] w-full text-center">
         No Favourite characters yet
@@ -44,7 +43,7 @@ export default function Favourites() {
               </Fragment>
             ))}
           </div>
-        ) : isSuccess ? (
+        ) : isSuccess && data.length > 1 ? (
           <div className="flex flex-col w-full gap-5">
             <div className="largeGrid">
               {data?.map((character: any, index: number) => (
@@ -58,6 +57,26 @@ export default function Favourites() {
                   />
                 </Fragment>
               ))}
+            </div>
+            <div className="w-full flex justify-center mt-5">
+              <PaginationComp
+                page={page}
+                per_page={20}
+                total={data?.info?.count}
+                setPagination={setPage}
+              />
+            </div>
+          </div>
+        ) : isSuccess ? (
+          <div className="flex flex-col w-full gap-5">
+            <div className="largeGrid">
+              <Card
+                id={data.id}
+                name={data.name}
+                status={data.status}
+                image={data.image}
+                episode={data.episode.length}
+              />
             </div>
             <div className="w-full flex justify-center mt-5">
               <PaginationComp

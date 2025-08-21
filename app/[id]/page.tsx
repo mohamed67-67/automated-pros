@@ -12,6 +12,7 @@ export async function generateStaticParams() {
   );
   return characters.results.map((character: any) => ({
     id: String(character.id),
+    fallback: "blocking",
   }));
 }
 
