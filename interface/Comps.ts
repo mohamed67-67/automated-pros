@@ -5,7 +5,7 @@ export interface ICard {
   name: string;
   status: CharStatus;
   episode: number;
-  link: string;
+  id: number;
 }
 
 export interface IPaginationComp {

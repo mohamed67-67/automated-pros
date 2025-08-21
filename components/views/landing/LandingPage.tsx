@@ -1,6 +1,6 @@
 "use client";
 
-import { gerCaracters } from "@/services/characters";
+import { getCharacters } from "@/services/characters";
 import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import CharactersList from "./CharactersList";
@@ -19,7 +19,7 @@ export default function LandingPage() {
   });
   const { data, isLoading, isError, isSuccess, refetch } = useQuery({
     queryFn: () =>
-      gerCaracters({
+      getCharacters({
         page,
         name,
         status: filters.status,
@@ -33,7 +33,6 @@ export default function LandingPage() {
     setPage(1);
   }, [name, filters.gender, filters.status]);
 
-  console.log(data);
   return (
     <div className="px-20 flex flex-col gap-14">
       <ActionComp

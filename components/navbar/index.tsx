@@ -14,9 +14,14 @@ export default function NavBar() {
         quality={100}
         priority
       />
-      <Link href="/" passHref>
-        <nav className="text-white font-semibold">Home</nav>
-      </Link>
+      <div className="flex gap-3">
+        <Link href="/" passHref>
+          <nav className="text-white font-semibold">Home</nav>
+        </Link>
+        <Link href="/favourite" passHref>
+          <nav className="text-white font-semibold">favourites</nav>
+        </Link>
+      </div>
     </div>
   );
 }

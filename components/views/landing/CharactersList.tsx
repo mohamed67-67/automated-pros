@@ -33,7 +33,7 @@ export default function CharactersList({
             {data?.results?.map((character: any, index: number) => (
               <Fragment key={index}>
                 <Card
-                  link={character.url}
+                  id={character.id}
                   name={character.name}
                   status={character.status}
                   image={character.image}
